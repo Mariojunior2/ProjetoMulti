@@ -1,0 +1,244 @@
+
+$primary-color: #0288D1; 
+$secondary-color: #80DEEA; 
+$button-color: #FF7043;
+$background-color: #E1F5FE; 
+$text-color: #21272b; 
+
+$layer-one-color: #4FC3F7; 
+$layer-two-color: #039BE5; 
+$layer-three-color: #54a5e7; 
+$bubble-color: #FFEB3B; 
+
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+
+@mixin button-style($bg-color, $border-color) {
+  background-color: $bg-color;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+    transform: scale(1.05);
+  }
+}
+
+
+h1 {
+ color: $text-color; 
+  margin-bottom: 22px; 
+  animation: fadeIn 2s ease-out;
+  z-index: 2;
+  position: relative;
+}
+
+
+button[type="submit"] {
+  @include button-style($primary-color, #01579B);
+  width: 70%;
+  font-size: 18px;
+  font-weight: bold;
+
+  &:hover {
+    @include button-style($primary-color, #01579B);
+    transform: scale(1.05);
+  }
+}
+
+button {
+    @include button-style($primary-color, #01579B);
+}
+
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  font-weight: 400;
+  margin-bottom: 25px;
+  color: $text-color;
+}
+
+
+li {
+  background: #f9f9f9;
+  margin: 15px 0;
+  padding: 18px;
+  border: 2px solid #ddd;
+  @include border-radius(15px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #f1f1f1;
+  }
+}
+
+
+footer {
+  width: 100%;
+  background: transparent;
+  margin-top: 50px; 
+  @include border-radius(20px);
+  text-align: center;
+  color: $text-color;
+  font-size: 1.1rem;
+  font-weight: bold;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  animation: fadeInFooter 1.5s ease-out;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+// Animação de entrada do footer
+@keyframes fadeInFooter {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Body
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background-image: radial-gradient(circle at center, $layer-one-color, $layer-two-color);
+  font-size: 1.1rem;
+}
+
+// Camada de fundo
+body::before, body::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(circle, $layer-two-color, $layer-one-color);
+  @include border-radius(50%);
+  z-index: -2;
+  transform-origin: center;
+  animation: moveLayer 12s ease-in-out infinite;
+}
+
+// Animação do fundo
+@keyframes moveLayer {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: rgba($layer-three-color, 1.4); 
+  padding: 25px 35px;
+  @include border-radius(25px);
+  text-align: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1.5s ease-out;
+}
+
+// Animação de entrada do container
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+input[type="text"] {
+  width: 80%;
+  padding: 14px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin: 15px 0;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 10px rgba($primary-color, 0.6);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 30px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+  }
+}

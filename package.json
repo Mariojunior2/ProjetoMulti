@@ -1,0 +1,15 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "Este é um projeto de **assistente pessoal multiplataforma** desenvolvido com Electron, Python, HTML, CSS, PHP e banco de dados. Ele permite que os usuários gerenciem tarefas, organizem lembretes e interajam com o sistema usando comandos de voz.",
+  "main": "main.js",
+  "scripts": {
+    "start":"electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^33.2.0"
+  }
+}
