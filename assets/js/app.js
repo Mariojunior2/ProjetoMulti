@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     savedTasks.forEach((task) => addTaskToList(task));
 
-
     function addTaskToList(taskText) {
         const li = document.createElement("li");
         li.textContent = taskText;
@@ -15,9 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remover";
         removeButton.style.marginLeft = "10px";
+
+
         removeButton.addEventListener("click", () => {
             taskList.removeChild(li);
-            saveTasks();
+            saveTasks(); 
         });
 
         li.appendChild(removeButton);
@@ -40,16 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (taskText === "") return;
 
 
-        const currentTasks = Array.from(taskList.children).map((li) =>
-            li.firstChild.nodeValue.trim()
-        );
+        const currentTasks = JSON.parse(localStorage.getItem("tasks")) || [];
         if (currentTasks.includes(taskText)) {
             alert("Essa tarefa já existe!");
+
+
+            taskInput.value = "";
             return;
         }
 
+
         addTaskToList(taskText);
         saveTasks();
+
 
         taskInput.value = "";
     });
