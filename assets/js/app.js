@@ -39,7 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const taskText = taskInput.value.trim();
         if (taskText === "") return;
 
-        if (savedTasks.includes(taskText)) {
+
+        const currentTasks = Array.from(taskList.children).map((li) =>
+            li.firstChild.nodeValue.trim()
+        );
+        if (currentTasks.includes(taskText)) {
             alert("Essa tarefa já existe!");
             return;
         }
@@ -50,4 +54,3 @@ document.addEventListener("DOMContentLoaded", () => {
         taskInput.value = "";
     });
 });
-
