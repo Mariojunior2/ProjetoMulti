@@ -38,3 +38,4 @@ O projeto visa unir tecnologias populares para criar um aplicativo robusto, dest
 
 ## Como Contribuir  
 Contribuições são bem-vindas! Abra uma issue ou envie um pull request com melhorias ou correções.  
+Caso seja de forma Financeira qualquer doação iria a ajudar no PIX 142.704.589-50, se batermos a meta de R$2.000 poderemos postar e criar um futuro retorno financeiro para apoiadores.
